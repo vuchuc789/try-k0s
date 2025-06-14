@@ -1,0 +1,12 @@
+- name: Run apt
+  hosts: k0s_instances
+  become: True
+  tasks:
+    - name: Run apt update & apt upgrade
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: yes
+    - name: Install packages
+      ansible.builtin.apt:
+        name: iputils-ping
+        update_cache: yes
